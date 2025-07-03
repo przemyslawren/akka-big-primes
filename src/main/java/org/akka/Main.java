@@ -12,7 +12,9 @@ public class Main {
 //    }
 
     public static void main(String[] args) {
-        ActorSystem<String> actorSystem = ActorSystem.create(ManagerBehavior.create(), "ProbablePrimeSystem");
-        actorSystem.tell("start");
+        ActorSystem<ManagerBehavior.Command> actorSystem =
+                ActorSystem.create(ManagerBehavior.create(), "ProbablePrimeSystem");
+
+        actorSystem.tell(new ManagerBehavior.InstructionCommand("start"));
     }
 }
